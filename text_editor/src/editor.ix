@@ -1,0 +1,81 @@
+using javax.swing.JFileChooser;
+using javax.swing.JFrame;
+using javax.swing.JMenu;
+using javax.swing.JMenuBar;
+using javax.swing.JMenuItem;
+using javax.swing.JOptionPane;
+using javax.swing.JTextArea;
+using javax.swing.UIManager;
+using javax.swing.UnsupportedLookAndFeelException;
+using javax.swing.filechooser.FileSystemView;
+using java.awt.Component;
+using java.awt.event.ActionEvent;
+using java.awt.event.ActionListener;
+using java.io.File;
+using java.io.FileNotFoundException;
+using java.io.FileReader;
+using java.io.FileWriter;
+using java.io.IOException;
+using java.util.Scanner;
+using java.util.logging.Level;
+using java.util.logging.Logger;
+using javax.swing.plaf.metal.MetalLookAndFeel;
+using javax.swing.plaf.metal.OceanTheme;
+
+def main(){
+    var editor = new TextEdit();
+}
+
+class TextEdit ext JFrame {
+    var area : JTextArea?;
+    var frame : JFrame?;
+
+    this(){
+        frame = new JFrame("editor");
+
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+            MetalLookAndFeel.setCurrentTheme(new OceanTheme());
+        }
+        catch (ignored : Exception) {
+        }
+
+        area = new JTextArea();
+
+        var mb = new JMenuBar();
+
+        var m1 = new JMenu("File");
+
+        var mi1 = new JMenuItem("New");
+        var mi2 = new JMenuItem("Open");
+        var mi3 = new JMenuItem("Save");
+        var mi9 = new JMenuItem("Print");
+
+
+        m1.add(mi1);
+        m1.add(mi2);
+        m1.add(mi3);
+        m1.add(mi9);
+
+        var m2 = new JMenu("Edit");
+
+        var mi4 = new JMenuItem("cut");
+        var mi5 = new JMenuItem("copy");
+        var mi6 = new JMenuItem("paste");
+
+        m2.add(mi4);
+        m2.add(mi5);
+        m2.add(mi6);
+
+        var mc = new JMenuItem("close");
+
+        mb.add(m1);
+        mb.add(m2);
+        mb.add(mc);
+
+        frame.setJMenuBar(mb);
+        frame.add(area);
+        frame.setSize(500, 500);
+        frame.show();
+    }
+}
